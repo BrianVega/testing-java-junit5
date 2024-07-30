@@ -35,7 +35,6 @@ class PersonTest implements ModelTests {
 
     @RepeatedTest(value=10, name = "{displayName} : {currentRepetition} - {totalRepetitions}")
     @DisplayName("My repeated test")
-    @Test
     void myRepeatedTest() {
         System.out.println("repeated test");
     }
