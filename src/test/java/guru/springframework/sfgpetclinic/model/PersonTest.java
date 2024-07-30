@@ -1,13 +1,13 @@
 package guru.springframework.sfgpetclinic.model;
 
+import guru.springframework.sfgpetclinic.ModelTests;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-// Tag to identify our tests, this is class level, it also helps us to create configurations upon certain tagged classes
 @Tag("model")
-class PersonTest {
+class PersonTest implements ModelTests {
 
     @Test
     void groupedAssertions() {
