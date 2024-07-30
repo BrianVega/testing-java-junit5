@@ -9,6 +9,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assumptions.assumeTrue;
 
+// Tag to identify our tests, this is class level, it also helps us to create configurations upon certain tagged classes
 @Tag("controllers")
 class IndexControllerTest {
 

@@ -7,6 +7,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 import static org.junit.jupiter.api.Assertions.*;
 
+// Tag to identify our tests, this is class level, it also helps us to create configurations upon certain tagged classes
 @Tag("model")
 class OwnerTest {
 
