@@ -79,9 +79,9 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>2.22.0</version>
                 <configuration>
-                    <argLine>
-                        --illegal-access=permit
-                    </argLine>
+<!--                    <argLine>-->
+<!--                        &#45;&#45;illegal-access=permit-->
+<!--                    </argLine>-->
                 </configuration>
             </plugin>
             <plugin>
@@ -89,9 +89,9 @@
                 <artifactId>maven-failsafe-plugin</artifactId>
                 <version>2.22.0</version>
                 <configuration>
-                    <argLine>
-                        --illegal-access=permit
-                    </argLine>
+<!--                    <argLine>-->
+<!--                        &#45;&#45;illegal-access=permit-->
+<!--                    </argLine>-->
                 </configuration>
             </plugin>
         </plugins>
