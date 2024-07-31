@@ -114,6 +114,15 @@
                         --illegal-access=permit
                     </argLine>
                 </configuration>
+<!--            Necessary configuration for execute Integration tests at verify stage lifecycle-->
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>integration-test</goal>
+                            <goal>verify</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
