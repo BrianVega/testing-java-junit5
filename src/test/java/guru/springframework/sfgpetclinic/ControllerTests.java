@@ -1,18 +1,18 @@
 package guru.springframework.sfgpetclinic;
 
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.TestInstance;
 
-// To set beforeAll as not static
+/**
+ * Created by jt on 2018-10-28.
+ */
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-// Tag to identify our tests, this is class level, it also helps us to create configurations upon certain tagged classes
-@Tag("controller")
+@Tag("controllers")
 public interface ControllerTests {
 
     @BeforeAll
-    default void beforeAll() {
-        System.out.println("Before All. Let's do something here");
+    default void beforeAll(){
+        System.out.println("Lets do something here");
     }
 }

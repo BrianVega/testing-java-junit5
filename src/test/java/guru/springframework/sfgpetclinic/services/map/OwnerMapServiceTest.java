@@ -4,13 +4,14 @@ import guru.springframework.sfgpetclinic.model.Owner;
 import guru.springframework.sfgpetclinic.model.PetType;
 import guru.springframework.sfgpetclinic.services.PetService;
 import guru.springframework.sfgpetclinic.services.PetTypeService;
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Nested;
+import org.junit.jupiter.api.Test;
 
-import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
-@Tag("services")
-@DisplayName("Owner Map Service Test -")
+@DisplayName("Owner Map Service Test - ")
 class OwnerMapServiceTest {
 
     OwnerMapService ownerMapService;
@@ -22,47 +23,44 @@ class OwnerMapServiceTest {
         petTypeService = new PetTypeMapService();
         petService = new PetMapService();
         ownerMapService = new OwnerMapService(petTypeService, petService);
-        System.out.println("First before each");
     }
 
     @DisplayName("Verify Zero Owners")
     @Test
     void ownersAreZero() {
         int ownerCount = ownerMapService.findAll().size();
+
         assertThat(ownerCount).isZero();
     }
 
     @DisplayName("Pet Type - ")
     @Nested
     class TestCreatePetTypes {
+
         @BeforeEach
         void setUp() {
             PetType petType = new PetType(1L, "Dog");
             PetType petType2 = new PetType(2L, "Cat");
             petTypeService.save(petType);
             petTypeService.save(petType2);
-            System.out.println("Nested before each");
         }
 
         @DisplayName("Test Pet Count")
         @Test
         void testPetCount() {
             int petTypeCount = petTypeService.findAll().size();
-            assertThat(petTypeCount)
-                    .isNotZero()
-                    .isEqualTo(2);
+
+            assertThat(petTypeCount).isNotZero().isEqualTo(2);
         }
 
-    @DisplayName("Save Owners Tests - ")
-    @Nested
-    class SaveOwnersTests {
+        @DisplayName("Save Owners Tests - ")
+        @Nested
+        class SaveOwnersTests {
 
-        @BeforeEach
-        void setUp() {
-            ownerMapService.save(new Owner(1L, "Before", "Each"));
-
-            System.out.println("Saved Owners Before Each");
-        }
+            @BeforeEach
+            void setUp() {
+                ownerMapService.save(new Owner(1L, "Before", "Each"));
+            }
 
             @DisplayName("Save Owner")
             @Test
@@ -106,5 +104,4 @@ class OwnerMapServiceTest {
 
         assertThat(ownerCount).isZero();
     }
-
 }
