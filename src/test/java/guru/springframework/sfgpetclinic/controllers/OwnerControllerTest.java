@@ -2,10 +2,8 @@ package guru.springframework.sfgpetclinic.controllers;
 
 import guru.springframework.sfgpetclinic.fauxspring.BindingResult;
 import guru.springframework.sfgpetclinic.fauxspring.Model;
-import guru.springframework.sfgpetclinic.fauxspring.ModelMap;
 import guru.springframework.sfgpetclinic.model.Owner;
 import guru.springframework.sfgpetclinic.services.OwnerService;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -18,6 +16,7 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.BDDMockito.given;
+import static org.mockito.Mockito.*;
 
 
 @ExtendWith(MockitoExtension.class)
@@ -81,8 +80,9 @@ class OwnerControllerTest {
         // inorder asserts
         inOrder.verify(ownerService)
                 .findAllByLastNameLike(anyString());
-        inOrder.verify(model)
+        inOrder.verify(model, times(1))
                 .addAttribute(anyString(), anyList());
+        verifyNoMoreInteractions(model);
     }
 
     @Test
@@ -97,6 +97,7 @@ class OwnerControllerTest {
                 .isEqualToIgnoringCase(stringArgumentCaptor.getValue());
         assertThat("redirect:/owners/1")
                 .isEqualToIgnoringCase(viewName);
+        verifyNoInteractions(model);
     }
 
     @Test
@@ -106,6 +107,9 @@ class OwnerControllerTest {
         //when
         String viewName = ownerController
                 .processFindForm(owner, result, null);
+        verifyNoMoreInteractions(ownerService);
+
+
         //then
         assertThat("%DontFindMe%")
                 .isEqualToIgnoringCase(stringArgumentCaptor.getValue());
